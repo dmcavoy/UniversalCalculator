@@ -59,6 +59,11 @@
     }
 }
 
+/*
+ The scale of the graph is changed by pinching. In this way users
+ can zoom in and out.
+ */
+
 - (void)pinch:(UIPinchGestureRecognizer *)gesture
 {
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
@@ -67,6 +72,12 @@
         gesture.scale = 1;           // reset gestures scale to 1 (so future changes are incremental, not cumulative)
     }
 }
+
+/*
+ If the user pans the graph pans with it so that they can look
+ at other parts of the graph.  This moves the origin of the graph
+ by the amount they have panned.
+ */
 
 -(void)pan:(UIPanGestureRecognizer *)gesture
 {
@@ -81,6 +92,10 @@
     }
 }
 
+/*
+ If user double taps on screen the origin is set back to the center
+ of the screen.
+ */
 -(void)doubleTap:(UITapGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateEnded) {

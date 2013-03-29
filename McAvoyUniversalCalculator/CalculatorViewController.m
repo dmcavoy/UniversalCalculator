@@ -11,6 +11,7 @@
 
 @interface CalculatorViewController ()
 @property (nonatomic,strong) CalculatorBrain *brain;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 // Keeps track of if the user is inputing a number
 @property (nonatomic) BOOL userIsInTheMiddleOfTypingANumber;
@@ -22,6 +23,7 @@
 @implementation CalculatorViewController
 @synthesize userIsInTheMiddleOfTypingANumber =
 _userIsInTheMiddleOfTypingANumber;
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 
 
 -(CalculatorBrain*) brain{
@@ -42,6 +44,23 @@ _userIsInTheMiddleOfTypingANumber;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if (_splitViewBarButtonItem != splitViewBarButtonItem) {
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        if (_splitViewBarButtonItem) {
+            [toolbarItems removeObject:_splitViewBarButtonItem];
+        }
+        if (splitViewBarButtonItem) {
+            [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+            
+        }
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = splitViewBarButtonItem;
+        [self.toolbar setNeedsDisplay];
+    }
 }
 
 /*

@@ -51,6 +51,7 @@
 		33C1DB751704C1230086A657 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 		33C1DB771704C12C0086A657 /* GraphingCalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingCalculatorViewController.h; sourceTree = "<group>"; };
 		33C1DB781704C12C0086A657 /* GraphingCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingCalculatorViewController.m; sourceTree = "<group>"; };
+		33ED0570170521220034D385 /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 				33C1DB581704BE9B0086A657 /* CalculatorAppDelegate.m */,
 				33C1DB601704BE9B0086A657 /* iPhone.storyboard */,
 				33C1DB631704BE9B0086A657 /* iPad.storyboard */,
+				33ED0570170521220034D385 /* SplitViewBarButtonItemPresenter.h */,
 				33C1DB741704C1230086A657 /* CalculatorBrain.h */,
 				33C1DB751704C1230086A657 /* CalculatorBrain.m */,
 				33C1DB711704C1130086A657 /* GraphView.h */,
@@ -337,6 +339,7 @@
 				33C1DB6D1704BE9B0086A657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

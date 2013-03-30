@@ -9,10 +9,14 @@
 #import "GraphingCalculatorViewController.h"
 
 @interface GraphingCalculatorViewController ()
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
 @implementation GraphingCalculatorViewController
+
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
+@synthesize toolbar = _toolbar;
 
 -(CalculatorBrain*) brain{
     // keeps from creating multiple brains
@@ -36,6 +40,22 @@
     [doubleTapped setNumberOfTapsRequired:2];
     [self.graphView addGestureRecognizer:doubleTapped];
     [self updateUI];
+}
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if (_splitViewBarButtonItem != splitViewBarButtonItem) {
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        if (_splitViewBarButtonItem) {
+            [toolbarItems removeObject:_splitViewBarButtonItem];
+        }
+        if (splitViewBarButtonItem) {
+            [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+        }
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = splitViewBarButtonItem;
+        [self.toolbar setNeedsDisplay];
+    }
 }
 
 - (void)didReceiveMemoryWarning

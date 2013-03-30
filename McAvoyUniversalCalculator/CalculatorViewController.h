@@ -12,9 +12,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GraphingCalculatorViewController.h"
-#import "SplitViewBarButtonItemPresenter.h"
 
-@interface CalculatorViewController : UIViewController <SplitViewBarButtonItemPresenter>
+@interface CalculatorViewController : UIViewController <UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *equationDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *memoryDisplay;

@@ -17,8 +17,9 @@
 #import <UIKit/UIKit.h>
 #import "GraphView.h"
 #import "CalculatorBrain.h"
+#import "SplitViewBarButtonItemPresenter.h"
 
-@interface GraphingCalculatorViewController : UIViewController <GraphViewDelegate>
+@interface GraphingCalculatorViewController : UIViewController <GraphViewDelegate, SplitViewBarButtonItemPresenter>
 
 @property (weak, nonatomic) IBOutlet GraphView *graphView;
 

@@ -8,6 +8,7 @@
 
 #import "CalculatorViewController.h"
 #import "CalculatorBrain.h"
+#import "GraphingCalculatorViewController.h"
 
 @interface CalculatorViewController ()
 @property (nonatomic,strong) CalculatorBrain *brain;
@@ -239,6 +240,14 @@ _userIsInTheMiddleOfTypingANumber;
     
 }
 
+- (GraphingCalculatorViewController *)splitViewCalculatorViewController
+{
+    id hvc = [self.splitViewController.viewControllers lastObject];
+    if (![hvc isKindOfClass:[GraphingCalculatorViewController class]]) {
+        hvc = nil;
+    }
+    return hvc;
+}
 
 - (IBAction)graphPressed:(UIButton *)sender {
     
@@ -260,6 +269,12 @@ _userIsInTheMiddleOfTypingANumber;
     // didn't press equals before
     if (!self.brain.startDisplayOver) {
         [self.brain performOperation:@"="];
+    }
+    
+    if ([self splitViewController]) {
+        GraphingCalculatorViewController *gcvc = [self splitViewCalculatorViewController];
+        gcvc.brain = self.brain;
+        [gcvc.graphView setNeedsDisplay];
     }
     
     /* Set the display to a string with the expression and

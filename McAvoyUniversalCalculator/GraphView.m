@@ -21,6 +21,8 @@
 {
     if (!_scale) {
         
+        
+        // Setting User Defaults to match value
         [[NSUserDefaults standardUserDefaults]setObject: [NSNumber numberWithFloat: DEFAULT_SCALE] forKey:@"scale"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         

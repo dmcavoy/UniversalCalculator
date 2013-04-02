@@ -20,16 +20,12 @@
 - (CGFloat)scale
 {
     if (!_scale) {
-        if ([[NSUserDefaults standardUserDefaults] floatForKey:@"scale"]) {
-            return[[NSUserDefaults standardUserDefaults] floatForKey:@"scale"];
-        }
-        else{
         
         [[NSUserDefaults standardUserDefaults]setObject: [NSNumber numberWithFloat: DEFAULT_SCALE] forKey:@"scale"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-            return DEFAULT_SCALE; // don't allow zero scale
-        }
+        return DEFAULT_SCALE; // don't allow zero scale
+        
     } else {
         return _scale;
     }
@@ -54,17 +50,11 @@
 -(CGPoint)origin
 {
     if(!_origin.x && ! _origin.y){
-       /*if ([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"])
-       {
-            return CGPointFromString([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"]);
-       }
-       else{ */
         
-           [[NSUserDefaults standardUserDefaults] setObject: NSStringFromCGPoint(CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)) forKey:@"origin"];
-           [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSUserDefaults standardUserDefaults] setObject: NSStringFromCGPoint(CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)) forKey:@"origin"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
-           return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-      //}
+        return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     }
     else{
         return _origin;

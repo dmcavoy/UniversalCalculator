@@ -41,6 +41,7 @@
     [self.graphView addGestureRecognizer:doubleTapped];
     
     self.graphView.origin = CGPointFromString([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"]);
+    self.graphView.scale = [[NSUserDefaults standardUserDefaults] floatForKey:@"scale"];
     
     [self updateUI];
 }

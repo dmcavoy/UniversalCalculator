@@ -63,6 +63,14 @@ _userIsInTheMiddleOfTypingANumber;
     barButtonItem.title = @"Calculator";
     // tell the detail view to put the button up
     [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = barButtonItem;
+    /*
+    In searching for help with bounding boxes found this http://stackoverflow.com/questions/6233356/size-of-popover-in-a-uiviewcontroller */
+    
+    CGRect boundingRect = CGRectZero;
+    for (UIView *view in self.view.subviews) {
+        boundingRect = CGRectUnion(view.frame, boundingRect);
+    }
+    pc.popoverContentSize = boundingRect.size;
 }
 
 - (void)splitViewController:(UISplitViewController *)svc
@@ -84,7 +92,6 @@ _userIsInTheMiddleOfTypingANumber;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,15 +99,6 @@ _userIsInTheMiddleOfTypingANumber;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-- (GraphingCalculatorViewController *)splitViewHappinessViewController
-{
-    id hvc = [self.splitViewController.viewControllers lastObject];
-    if (![hvc isKindOfClass:[GraphingCalculatorViewController class]]) {
-        hvc = nil;
-    }
-    return hvc;
-} */
 
 /*
  Makes it so the brain is passed from one viewController to the other

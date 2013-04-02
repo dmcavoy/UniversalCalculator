@@ -20,7 +20,16 @@
 - (CGFloat)scale
 {
     if (!_scale) {
-        return DEFAULT_SCALE; // don't allow zero scale
+        if ([[NSUserDefaults standardUserDefaults] floatForKey:@"scale"]) {
+            return[[NSUserDefaults standardUserDefaults] floatForKey:@"scale"];
+        }
+        else{
+        
+        [[NSUserDefaults standardUserDefaults]setObject: [NSNumber numberWithFloat: DEFAULT_SCALE] forKey:@"scale"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+            return DEFAULT_SCALE; // don't allow zero scale
+        }
     } else {
         return _scale;
     }
@@ -36,15 +45,26 @@
     }
     if (scale != _scale) {
         _scale = scale;
+        [[NSUserDefaults standardUserDefaults] setFloat:self.scale forKey:@"scale"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self setNeedsDisplay]; // any time our scale changes, call for redraw
     }
 }
 
 -(CGPoint)origin
 {
-    if(CGPointEqualToPoint(CGPointZero, _origin)){
+    if(!_origin.x && ! _origin.y){
+       /*if ([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"])
+       {
+            return CGPointFromString([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"]);
+       }
+       else{ */
         
-        return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+           [[NSUserDefaults standardUserDefaults] setObject: NSStringFromCGPoint(CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)) forKey:@"origin"];
+           [[NSUserDefaults standardUserDefaults] synchronize];
+        
+           return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+      //}
     }
     else{
         return _origin;
@@ -55,6 +75,8 @@
 {
     if(!CGPointEqualToPoint(origin, _origin)){
         _origin = origin;
+        [[NSUserDefaults standardUserDefaults] setObject: NSStringFromCGPoint(self.origin)forKey:@"origin"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self setNeedsDisplay];
     }
 }

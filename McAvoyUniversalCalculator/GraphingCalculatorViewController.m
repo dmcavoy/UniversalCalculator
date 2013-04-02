@@ -39,6 +39,9 @@
     UITapGestureRecognizer * doubleTapped =[[UITapGestureRecognizer alloc]initWithTarget:self.graphView action:@selector(doubleTap:)];
     [doubleTapped setNumberOfTapsRequired:2];
     [self.graphView addGestureRecognizer:doubleTapped];
+    
+    self.graphView.origin = CGPointFromString([[NSUserDefaults standardUserDefaults] objectForKey:@"origin"]);
+    
     [self updateUI];
 }
 
